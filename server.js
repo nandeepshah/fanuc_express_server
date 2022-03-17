@@ -6,13 +6,14 @@ const hostname = 'localhost';
 const port = 3000;
 
 const app = express();
+app.use(morgan('dev'));
+app.use(express.static(__dirname + '/public'));
 
 /**
  * Setup a basic server that sends the same response for all routes
  */
 
 app.use((req, res) => {
-	console.log(req.headers);
 	res.statusCode = 200;
 	res.setHeader('Content-Type', 'text/html');
 	res.end(
